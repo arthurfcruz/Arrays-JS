@@ -1,21 +1,24 @@
-const pessoasPorParada = [[2, 0], [3, 1], [1, 2], [0, 1]]
+const numeros = [2, 9, 14, 7, 15, 8, 26, 1, 13, 15]
 
-function pontosDeOnibus(pessoasPorParada) {
-    let pessoasNoOnibus = 0
+function Bingo(numeros) {
+    const letras = "BINGO"
+    const letrasEncontradas = new Set()
   
-    for (let i = 0; i < pessoasPorParada.length; i++) {
-      const entrada = pessoasPorParada[i][0];
-      const saida = pessoasPorParada[i][1]
+    for (let i = 0; i < numeros.length; i++) {
+      const letra = String.fromCharCode(64 + numeros[i])
   
-      pessoasNoOnibus += entrada
-      pessoasNoOnibus -= saida
-  
-      if (pessoasNoOnibus < 0) {
-        pessoasNoOnibus = 0
+      
+      if (letras.includes(letra)) {
+        letrasEncontradas.add(letra)
       }
     }
-    return pessoasNoOnibus
-}  
+  
+    if (letrasEncontradas.size === letras.length) {
+      return "GANHOU"
+    } else {
+      return "PERDEU"
+    }
+}
 
-const pessoasNoOnibus = pontosDeOnibus(pessoasPorParada)
-console.log("Total de pessoas no ônibus após a última parada:", pessoasNoOnibus)
+const resultado = Bingo(numeros)
+console.log("Resultado do jogo de BINGO:", resultado)
