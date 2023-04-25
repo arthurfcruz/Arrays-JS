@@ -1,17 +1,21 @@
-function multiplicar(numero) {
-    var tabuada = []
-    for (let index = 1; index < 11; index++) {
-        tabuada.push(numero * index)
-    }
-    
-    var tabuada2 = []
-    var sucessor = numero + 1
-    var numeroSucessor = numero + 2
-    for (let index = 1; index < 11; index++) {
-        tabuada2.push(sucessor * index)
-        tabuada2.push(numeroSucessor * index)
-    }
-    return {tabuada, tabuada2}
-}
+const pessoasPorParada = [[2, 0], [3, 1], [1, 2], [0, 1]]
 
-console.log(multiplicar(5))
+function pontosDeOnibus(pessoasPorParada) {
+    let pessoasNoOnibus = 0
+  
+    for (let i = 0; i < pessoasPorParada.length; i++) {
+      const entrada = pessoasPorParada[i][0];
+      const saida = pessoasPorParada[i][1]
+  
+      pessoasNoOnibus += entrada
+      pessoasNoOnibus -= saida
+  
+      if (pessoasNoOnibus < 0) {
+        pessoasNoOnibus = 0
+      }
+    }
+    return pessoasNoOnibus
+}  
+
+const pessoasNoOnibus = pontosDeOnibus(pessoasPorParada)
+console.log("Total de pessoas no ônibus após a última parada:", pessoasNoOnibus)
